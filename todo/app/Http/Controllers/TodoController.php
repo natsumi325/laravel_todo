@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Todo;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -13,7 +14,11 @@ class TodoController extends Controller
      */
     public function index()
     {
-        //
+        $todos = Todo::all();
+        return response()->json(
+            $todos,
+            200
+        );
     }
 
     /**
@@ -24,7 +29,11 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $todo = Todo::create($request->all());
+        return response()->json(
+            $todo,
+            201
+        );
     }
 
     /**
@@ -47,7 +56,21 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = [
+            'task' => $request->task,
+        ];
+        $todo = Todo::where('id', $id)->update($update);
+        $todos = Todo::all();
+        if ($todo) {
+            return response()->json(
+                $todos,
+                200
+            );
+        } else {
+            return response()->json([
+                'message' => 'Todo not found',
+            ], 404);
+        }
     }
 
     /**
@@ -58,6 +81,15 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $todo = Todo::where('id', $id)->delete();
+        if ($todo) {
+            return response()->json([
+                'message' => 'Todo deleted successfully',
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Todo not found',
+            ], 404);
+        }
     }
 }
