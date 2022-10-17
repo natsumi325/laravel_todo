@@ -1,0 +1,50 @@
+{
+  "gitmoji.additionalEmojis": [
+    {
+      "emoji": "🚧",
+      "code": ":wip:",
+      "description": "作業途中"
+    },
+    {
+      "emoji": "✅",
+      "code": ":update:",
+      "description": "ファイル、機能の更新"
+    },
+    {
+      "emoji": "✨",
+      "code": ":add:",
+      "description": "ファイル、機能の追加"
+    },
+    {
+      "emoji": "⚡️",
+      "code": ":refactor:",
+      "description": "リファクタ"
+    },
+    {
+      "emoji": "🔥",
+      "code": ":remove:",
+      "description": "ファイル、コードの削除"
+    },
+    {
+      "emoji": "🐛",
+      "code": ":fix:",
+      "description": "バグの修正"
+    },
+    {
+      "emoji": "🔧",
+      "code": ":chore:",
+      "description": "開発環境やドキュメントの追加、更新"
+    },
+    {
+      "emoji": "🚀",
+      "code": ":deploy:",
+      "description": "デプロイ"
+    },
+    {
+      "emoji": "🎉",
+      "code": ":start:",
+      "description": "プロジェクト開始！"
+    }
+  ],
+  "gitmoji.onlyUseAdditionalEmojis": true,
+}
