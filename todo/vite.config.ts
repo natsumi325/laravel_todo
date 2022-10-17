@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import react from '@vitejs/plugin-react'; // <- 追加
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
     plugins: [
@@ -10,6 +10,6 @@ export default defineConfig({
                 'resources/react/src/main.tsx'
             ],
         }),
-        react(), // <- 追加
+        react(),
     ],
 });
