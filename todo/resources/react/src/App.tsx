@@ -1,7 +1,14 @@
-import { Button, Box, TextInput, Checkbox, Group, Tabs } from "@mantine/core";
+import { Button, Box, TextInput, Group, Tabs, List } from "@mantine/core";
 import { IconBallpen, IconCircleCheck, IconCircleDashed } from "@tabler/icons";
+import useSWR from "swr";
+import { fetcher } from "./utilities/fetcher";
 
 export const App = () => {
+  const { data, error } = useSWR('/api/todos', fetcher)
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
+  console.log(data);
+
   return (
     <Box>
       <h1>TODO APP</h1>
@@ -26,7 +33,11 @@ export const App = () => {
 
           {/* 全todo一覧 */}
           <Tabs.Panel value="all" pt="md">
-            all tab content
+            <List>
+              {data.map((todo: TTodo) => (
+                <List.Item key={todo.id}>{todo.task}</List.Item>
+              ))}
+            </List>
           </Tabs.Panel>
 
           {/* 未todo一覧 */}
