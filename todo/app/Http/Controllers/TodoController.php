@@ -44,7 +44,14 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        //
+        if (Todo::where('id', $id)->exists()) {
+            $todo = Todo::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($todo, 200);
+        } else {
+            return response()->json([
+                "message" => "Todo not found"
+            ], 404);
+        }
     }
 
     /**
@@ -57,7 +64,7 @@ class TodoController extends Controller
     public function update(Request $request, $id)
     {
         $update = [
-            'task' => $request->task,
+            'done' => $request->done
         ];
         $todo = Todo::where('id', $id)->update($update);
         $todos = Todo::all();
