@@ -1,6 +1,6 @@
 import { Box } from "@mantine/core";
 import { TodoInput } from "./components/organisms/TodoInput";
-import { TodoList } from "./components/organisms/TodoList";
+import { TodoListWrapper } from "./components/organisms/TodoListWrapper";
 
 export const App = () => {
 
@@ -8,7 +8,7 @@ export const App = () => {
     <Box>
       <h1>TODO APP</h1>
       <TodoInput />
-      <TodoList />
+      <TodoListWrapper />
     </Box>
   )
 };

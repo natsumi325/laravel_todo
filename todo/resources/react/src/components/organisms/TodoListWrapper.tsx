@@ -3,9 +3,11 @@ import { IconBallpen, IconCircleCheck, IconCircleDashed } from "@tabler/icons";
 import useSWR from "swr";
 import { apiUrl } from "../../utilities/apiUrl";
 import { fetcher } from "../../utilities/fetcher";
-import { AllTodoItem } from "./AllTodoItem";
+import { AllTodoList } from "./AllTodoList";
+import { CompleteTodoList } from "./CompleteTodoList";
+import { IncompleteTodoList } from "./IncompleteTodoList";
 
-export const TodoList = () => {
+export const TodoListWrapper = () => {
   const { data, error } = useSWR(apiUrl, fetcher)
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
@@ -19,17 +21,13 @@ export const TodoList = () => {
           <Tabs.Tab sx={{ width: "33%" }} value="complete" icon={<IconCircleCheck size={24} />}>complete</Tabs.Tab>
         </Tabs.List>
         {/* 全todo一覧 */}
-        <AllTodoItem data={data} />
+        <AllTodoList data={data} />
 
         {/* 未todo一覧 */}
-        <Tabs.Panel value="incomplete" pt="md">
-          incomplete tab content
-        </Tabs.Panel>
+        <IncompleteTodoList />
 
         {/* 完了todo一覧 */}
-        <Tabs.Panel value="complete" pt="md">
-          complete tab content
-        </Tabs.Panel>
+        <CompleteTodoList />
       </Tabs>
     </Box >
   )

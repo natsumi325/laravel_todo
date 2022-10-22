@@ -6,7 +6,7 @@ import { apiUrl } from "../../utilities/apiUrl";
 
 type Props = { data: TTodo[] }
 
-export const AllTodoItem = ({ data }: Props) => {
+export const AllTodoList = ({ data }: Props) => {
   const { mutate } = useSWRConfig();
   // todoの状態切り替え（完了済み⇔未完了）
   const toggleTodoStatus = useCallback(async (todo: TUpdateTodo) => {
