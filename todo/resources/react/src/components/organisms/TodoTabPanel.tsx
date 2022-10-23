@@ -1,12 +1,14 @@
-import { Box, Tabs, Text, Button, Group, Stack } from "@mantine/core";
+import { Tabs, Text, Button, Group, Stack } from "@mantine/core";
 import axios from "axios";
 import { useCallback } from "react";
 import { useSWRConfig } from "swr";
 import { apiUrl } from "../../utilities/apiUrl";
+type Props = {
+  data: Array<TTodo>;
+  value: string;
+}
 
-type Props = { data: TTodo[] }
-
-export const AllTodoList = ({ data }: Props) => {
+export const TodoTabPanel = ({ data, value }: Props) => {
   const { mutate } = useSWRConfig();
   // todoの状態切り替え（完了済み⇔未完了）
   const toggleTodoStatus = useCallback(async (todo: TUpdateTodo) => {
@@ -20,7 +22,7 @@ export const AllTodoList = ({ data }: Props) => {
     mutate(apiUrl);
   }, []);
   return (
-    <Tabs.Panel value="all" pt="md" >
+    <Tabs.Panel value={value} pt="md" >
       <Stack spacing="sm">
         {data.map((todo: TTodo) => (
           <Group key={todo.id}>
