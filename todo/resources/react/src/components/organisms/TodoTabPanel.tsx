@@ -3,6 +3,7 @@ import axios from "axios";
 import { useCallback } from "react";
 import { useSWRConfig } from "swr";
 import { apiUrl } from "../../utilities/apiUrl";
+import { TodoItem } from "../molecules/TodoItem";
 type Props = {
   data: Array<TTodo>;
   value: string;
@@ -25,13 +26,9 @@ export const TodoTabPanel = ({ data, value }: Props) => {
     <Tabs.Panel value={value} pt="md" >
       <Stack spacing="sm">
         {data.map((todo: TTodo) => (
-          <Group key={todo.id}>
-            <Text sx={{ minWidth: '20rem' }}>・{todo.task}</Text>
-            <Button onClick={() => toggleTodoStatus(todo)} variant={todo.done === 1 ? 'light' : 'outline'}>{todo.done === 0 ? '完了済みにする' : '完了'}</Button>
-            <Button color="red" onClick={() => deleteTodo(todo.id)}>削除</Button>
-          </Group>
+          <TodoItem key={todo.id} todo={todo} toggleTodoStatus={toggleTodoStatus.bind(this, todo)} deleteTodo={deleteTodo.bind(this, todo.id)} />
         ))}
       </Stack>
-    </Tabs.Panel >
+    </Tabs.Panel>
   )
 }
