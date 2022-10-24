@@ -1,8 +1,9 @@
 import { Tabs } from "@mantine/core";
+import { memo } from "react";
 import { useFetchTodo } from "../../hooks/useFetchTodo";
 import { TodoTabPanel } from "./TodoTabPanel";
 
-export const TodoTabPanels = () => {
+export const TodoTabPanels = memo(() => {
   const { data, error } = useFetchTodo();
   if (error) return <Tabs.Panel value="all" pt="md">データの取得に失敗しました</Tabs.Panel>
   if (!data) return <Tabs.Panel value="all" pt="md">loading...</Tabs.Panel>
@@ -20,4 +21,4 @@ export const TodoTabPanels = () => {
       <TodoTabPanel value="complete" data={completeTodoData} />
     </>
   )
-}
+})

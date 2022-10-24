@@ -1,4 +1,5 @@
 import { Button, Group, Text } from '@mantine/core';
+import { memo } from 'react';
 
 type Props = {
   todo: TTodo;
@@ -6,7 +7,7 @@ type Props = {
   deleteTodo: () => Promise<void>;
 }
 
-export const TodoItem = ({ todo, toggleTodoStatus, deleteTodo }: Props) => {
+export const TodoItem = memo(({ todo, toggleTodoStatus, deleteTodo }: Props) => {
   return (
     <Group>
       <Text sx={{ minWidth: '20rem' }}>・{todo.task}</Text>
@@ -14,4 +15,4 @@ export const TodoItem = ({ todo, toggleTodoStatus, deleteTodo }: Props) => {
       <Button color="red" onClick={deleteTodo}>削除</Button>
     </Group>
   )
-}
+})

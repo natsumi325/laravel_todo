@@ -1,8 +1,9 @@
-import { Box, Tabs, Text, Button, Group, Stack } from "@mantine/core";
+import { Box, Tabs } from "@mantine/core";
 import { IconBallpen, IconCircleCheck, IconCircleDashed } from "@tabler/icons";
+import { memo } from "react";
 import { TodoTabPanels } from "./TodoTabPanels";
 
-export const TodoListWrapper = () => {
+export const TodoListWrapper = memo(() => {
   return (
     <Box mt="30px">
       <Tabs defaultValue="incomplete" sx={{ maxWidth: "800px", margin: 'auto' }}>
@@ -15,4 +16,4 @@ export const TodoListWrapper = () => {
       </Tabs>
     </Box >
   )
-}
+})

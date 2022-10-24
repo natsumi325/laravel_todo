@@ -1,6 +1,6 @@
-import { Tabs, Text, Button, Group, Stack } from "@mantine/core";
+import { Tabs, Stack } from "@mantine/core";
 import axios from "axios";
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import { useSWRConfig } from "swr";
 import { apiUrl } from "../../utilities/apiUrl";
 import { TodoItem } from "../molecules/TodoItem";
@@ -9,7 +9,7 @@ type Props = {
   value: string;
 }
 
-export const TodoTabPanel = ({ data, value }: Props) => {
+export const TodoTabPanel = memo(({ data, value }: Props) => {
   const { mutate } = useSWRConfig();
   // todoの状態切り替え（完了済み⇔未完了）
   const toggleTodoStatus = useCallback(async (todo: TUpdateTodo) => {
@@ -31,4 +31,4 @@ export const TodoTabPanel = ({ data, value }: Props) => {
       </Stack>
     </Tabs.Panel>
   )
-}
+})

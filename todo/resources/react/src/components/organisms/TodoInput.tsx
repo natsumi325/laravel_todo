@@ -1,11 +1,11 @@
 import { Box, Button, Group, TextInput } from '@mantine/core'
 import axios from 'axios'
-import { RefObject, useCallback, useRef } from 'react'
+import { memo, useCallback, useRef } from 'react'
 import { useSWRConfig } from 'swr'
 import { apiUrl } from '../../utilities/apiUrl'
 
 
-export const TodoInput = () => {
+export const TodoInput = memo(() => {
   const { mutate } = useSWRConfig();
 
   const inputEl = useRef<HTMLInputElement>(null);
@@ -31,4 +31,4 @@ export const TodoInput = () => {
       </Group>
     </Box>
   )
-}
+})
