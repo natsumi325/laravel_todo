@@ -1,23 +1,10 @@
 import { Box, Button, Group, TextInput } from '@mantine/core'
-import axios from 'axios'
-import { memo, useCallback, useRef } from 'react'
-import { useSWRConfig } from 'swr'
-import { apiUrl } from '../../utilities/apiUrl'
+import { memo } from 'react'
+import { useMutateTodo } from '../../hooks/useMutateTodo';
 
 
 export const TodoInput = memo(() => {
-  const { mutate } = useSWRConfig();
-
-  const inputEl = useRef<HTMLInputElement>(null);
-  const addTodoItem = useCallback(async () => {
-    if (inputEl.current?.value === "") {
-      return;
-    }
-    const newTodoItem: TPostTodo = { task: inputEl.current!.value, done: 0 };
-    await axios.post(apiUrl, newTodoItem);
-    mutate(apiUrl);
-    inputEl.current!.value = "";
-  }, []);
+  const { inputEl, addTodoItem } = useMutateTodo();
   return (
     <Box sx={{ maxWidth: 500 }} mx="auto">
       <Group position="right" mt="md" noWrap>
