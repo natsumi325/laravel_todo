@@ -1,14 +1,11 @@
-import { Box } from "@mantine/core";
-import { TodoInput } from "./components/organisms/TodoInput";
-import { TodoListWrapper } from "./components/organisms/TodoListWrapper";
+import { Top } from "./components/pages/Top";
+import { MantineBasicProvider } from "./Providers/MantineBasicProvider";
 
 export const App = () => {
 
   return (
-    <Box>
-      <h1>TODO APP</h1>
-      <TodoInput />
-      <TodoListWrapper />
-    </Box>
+    <MantineBasicProvider>
+      <Top />
+    </MantineBasicProvider>
   )
 };

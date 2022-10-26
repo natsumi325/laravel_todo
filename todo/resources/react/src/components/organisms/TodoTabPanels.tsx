@@ -1,36 +1,14 @@
-import { Tabs } from "@mantine/core";
 import { memo } from "react";
 import { useFetchTodo } from "../../hooks/useFetchTodo";
-import { TodoTabPanel } from "./TodoTabPanel";
+import { TodoStatusSort } from "./TodoStatusSort";
+import { TodoTabPanelTexts } from "./TodoTabPanelTexts";
+
 
 export const TodoTabPanels = memo(() => {
   const { data, error } = useFetchTodo();
-  if (error) return (
-    <>
-      <Tabs.Panel value="all" pt="md">データの取得に失敗しました</Tabs.Panel>
-      <Tabs.Panel value="incomplete" pt="md">データの取得に失敗しました</Tabs.Panel>
-      <Tabs.Panel value="complete" pt="md">データの取得に失敗しました</Tabs.Panel>
-    </>
-  )
-  if (!data) return (
-    <>
-      <Tabs.Panel value="all" pt="md">loading...</Tabs.Panel>
-      <Tabs.Panel value="incomplete" pt="md">loading...</Tabs.Panel>
-      <Tabs.Panel value="complete" pt="md">loading...</Tabs.Panel>
-    </>
-  )
-  // 未完了TODO
-  const incompleteTodoData = data && data.filter((todo: TTodo) => todo.done === 0)
-  // 完了TODO
-  const completeTodoData = data && data.filter((todo: TTodo) => todo.done === 1)
+  if (error) return <TodoTabPanelTexts text="データの取得に失敗しました" />
+  if (!data) return <TodoTabPanelTexts text="loading..." />
   return (
-    <>
-      {/* 全todo一覧 */}
-      <TodoTabPanel value="all" data={data} />
-      {/* 未todo一覧 */}
-      <TodoTabPanel value="incomplete" data={incompleteTodoData} />
-      {/* 完了todo一覧 */}
-      <TodoTabPanel value="complete" data={completeTodoData} />
-    </>
+    <TodoStatusSort data={data} />
   )
 })
