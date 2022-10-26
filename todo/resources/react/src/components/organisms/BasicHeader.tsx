@@ -1,5 +1,6 @@
 import { Header, Text, ActionIcon, useMantineColorScheme, Group, Button, Box } from '@mantine/core'
 import { IconSun, IconMoonStars, IconCheckbox, IconBallpen } from '@tabler/icons';
+import { ChangeFaviconButtons } from './ChangeFaviconButtons';
 
 export const BasicHeader = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -22,6 +23,7 @@ export const BasicHeader = () => {
           <Text size={24} color='#228be6'>TODO APP</Text>
         </Group>
         <Group>
+          <ChangeFaviconButtons />
           <ActionIcon
             variant="outline"
             color={dark ? 'yellow' : 'blue'}
