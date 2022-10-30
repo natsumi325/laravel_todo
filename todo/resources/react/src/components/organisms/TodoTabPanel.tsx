@@ -1,9 +1,6 @@
 import { Tabs, Stack } from "@mantine/core";
-import axios from "axios";
-import { memo, useCallback } from "react";
-import { useSWRConfig } from "swr";
+import { memo } from "react";
 import { useMutateTodo } from "../../hooks/useMutateTodo";
-import { apiUrl } from "../../utilities/apiUrl";
 import { TodoItem } from "../molecules/TodoItem";
 type Props = {
   data: Array<TTodo>;

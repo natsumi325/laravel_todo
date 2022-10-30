@@ -1,5 +1,5 @@
-import { Header, Text, ActionIcon, useMantineColorScheme, Group, Button, Box } from '@mantine/core'
-import { IconSun, IconMoonStars, IconCheckbox, IconBallpen } from '@tabler/icons';
+import { Header, Text, ActionIcon, useMantineColorScheme, Group, Box } from '@mantine/core'
+import { IconSun, IconMoonStars, IconCheckbox } from '@tabler/icons';
 import { ChangeFaviconButtons } from './ChangeFaviconButtons';
 
 export const BasicHeader = () => {
